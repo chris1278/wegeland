@@ -1,7 +1,15 @@
 services:
-    wegeland.speciallang.listener:
-        class: wegeland\speciallang\event\main_listener
+    wegeland.speciallang.controller.acp:
+        class: wegeland\speciallang\controller\acp_controller
         arguments:
             - '@language'
+            - '@request'
+            - '@template'
+            - '@config'
+            
+    wegeland.speciallang.listener:
+        class: wegeland\speciallang\event\listener
+        arguments:
+         - '@config'
         tags:
             - { name: event.listener }

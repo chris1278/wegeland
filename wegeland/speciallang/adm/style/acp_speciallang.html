@@ -1,0 +1,34 @@
+{% INCLUDECSS '@wegeland_speiallang/css/acp_speciallang.css' %}
+{% include 'overall_header.html' %}
+
+<h1>{{ lang('ACP_SPECIALLANG_TITLE') }}</h1>
+<p>{{ lang('ACP_SPECIALLANG_EXPLAIN') }}</p>
+
+{% if SPECIALLANG_S_ERROR %}
+	<div class="errorbox">
+		<h3>{{ lang('WARNING') }}</h3>
+		<p>{{ SPECIALLANG_ERROR_MSG }}</p>
+	</div>
+{% endif %}
+
+
+<form id="wegeland_speciallang" name="wegeland_speciallang" method="post" action="{{ U_ACTION }}">
+	<fieldset>
+		<legend>{{ lang('SETTINGS') }}</legend>
+		<dl>
+			<dt>
+				<label>{{ lang('ACP_SPECIAL_SWITCH') ~ lang('COLON') }}</label><br>
+				<span>{{ lang('ACP_SPECIAL_SWITCH_EXPLAIN') }}</span>
+			</dt>
+			<dd>
+				<label><input type="radio" class="radio" name="speciallang_switch" value="1"{{ ACP_SPECIAL_SWITCH == 1 ? 'checked' }}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="speciallang_switch" value="0"{{ ACP_SPECIAL_SWITCH == 0 ? 'checked' }}> {{ lang('NO') }}</label>
+			</dd>
+		</dl>
+	</fieldset>
+	<fieldset class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}">&nbsp;
+	</fieldset>
+	{{ S_FORM_TOKEN }}
+</form>
+{% include 'overall_footer.html' %}
