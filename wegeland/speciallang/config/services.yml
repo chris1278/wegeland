@@ -1,0 +1,7 @@
+services:
+    wegeland.speciallang.listener:
+        class: wegeland\speciallang\event\main_listener
+        arguments:
+            - '@language'
+        tags:
+            - { name: event.listener }
