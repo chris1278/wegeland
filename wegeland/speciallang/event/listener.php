@@ -16,13 +16,23 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class listener implements EventSubscriberInterface
 {
+	protected $config;
+	protected $template;
 
-	public function __construct(){}
+	public function __construct(
+		\phpbb\config\config $config,
+		\phpbb\template\template $template
+	)
+	{
+		$this->config	= $config;
+		$this->template	= $template;
+	}
 
 	public static function getSubscribedEvents()
 	{
 		return [
 			'core.user_setup'				=> 'load_language_on_setup',
+			'core.page_header_after'		=> 'run_wegeland',
 		];
 	}
 
@@ -34,5 +44,12 @@ class listener implements EventSubscriberInterface
 			'lang_set'	=> 'speciallang',
 		];
 		$event['lang_set_ext'] = $lang_set_ext;
+	}
+
+	public function run_wegeland()
+	{
+		$this->template->assign_vars([
+			'WS_SPECIALLANG'		=> ($this->config['speciallang_switch']) ? true : false,
+		]);
 	}
 }
