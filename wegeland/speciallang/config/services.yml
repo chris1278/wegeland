@@ -11,5 +11,6 @@ services:
         class: wegeland\speciallang\event\listener
         arguments:
          - '@config'
+         - '@template'
         tags:
             - { name: event.listener }

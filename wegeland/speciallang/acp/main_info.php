@@ -13,7 +13,7 @@
 namespace wegeland\speciallang\acp;
 
 class main_info
-{/*
+{
 	public function module()
 	{
 		return [
@@ -22,10 +22,10 @@ class main_info
 			'modes'		=> [
 				'settings'	=> [
 					'title'	=> 'SETTINGS',
-					'auth'	=> 'wegeland/speciallang',
+					'auth'	=> 'ext_wegeland/speciallang',
 					'cat'	=> ['ACP_SPECIALLANG_TITLE'],
 				],
 			],
 		];
-	}*/
+	}
 }

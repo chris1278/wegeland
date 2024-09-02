@@ -47,7 +47,7 @@ class acp_controller
 			}
 			if (empty($errors))
 			{
-				$this->write_user_jsclock_anonymous('speciallang_switch', $this->request->variable('speciallang_switch', 0));
+				$this->config->set('speciallang_switch', $this->request->variable('speciallang_switch', 0));
 				trigger_error($this->language->lang('ACP_SPECIALLANG_SETTING_SAVED') . adm_back_link($this->u_action));
 			}
 		}
@@ -57,7 +57,7 @@ class acp_controller
 		$this->template->assign_vars([
 			'SPECIALLANG_S_ERROR'		=> $s_errors,
 			'SPECIALLANG_ERROR_MSG'		=> $s_errors ? implode('<br>', $errors) : '',
-			'ACP_SPECIAL_SWITCH'		=> $this->config('speciallang_switch'),
+			'ACP_SPECIAL_SWITCH'		=> $this->config['speciallang_switch'],
 			'U_ACTION'					=> $this->u_action,
 		]);
 	}
